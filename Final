@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        #converter {
+            margin-top: 100px;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+        #wrapper {
+            height: 500px;
+            width: 100%;
+        }
+        #codeInput {
+            height: 200px;
+            width: 200px;
+            text-align: center;
+            float: left;
+        }
+        #numInput{
+            height: 200px;
+            width: 200px;
+            text-align: center;
+            float: right;
+        }
+        .main
+        {
+            display: grid;
+            grid-template-columns:
+            grid-template-rows: 1fr 1fr;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            padding-top: 20px;
+        }
+        #code
+        {
+            left: 0;
+
+        }
+        #num
+        {
+            right: 0;
+
+        }
+    </style>
+    <head>
+        <title>Code</title>
+    </head>
+    <body>
+    <div id = wrapper>
+        <div class = "main">
+                <div id = "converter">
+                 <input type = "text" id = "codeInput" placeholder = "enter code ">
+                 <input type = "number" id = "numInput" placeholder = "enter conversion">
+                 </div>
+                 </p>
+                    <button type = "button" onclick="caesar(); return false"> Convert </button>
+                <p id = "word_out"></p>
+        </div>
+    </div>
+     </body>
+     <script>
+
+     function caesar()
+     {
+        var userName = document.getElementById("codeInput").value;
+	    var shiftBy = Number(document.getElementById("numInput").value);
+        var size= userName.length;
+    	var encrypt="";
+	    var temp = 0;
+	    var i=0;
+
+
+    	for (i=0; i<size; i++){
+		temp=userName.charCodeAt(i)
+		{
+
+		// Uppercase
+		if ((temp >= 65) && (temp <= 90)){
+			temp = (((temp - 65 + shiftBy) % 26) + 65);
+		}
+
+		// Lowercase
+		else if ((temp >= 97) && (temp <= 122)){
+			temp = (((temp - 97 + shiftBy) % 26) + 97);
+		}
+
+		else {
+			temp = "  ";
+		}
+
+		}
+		encrypt += String.fromCharCode(temp)
+	}
+
+	//output to the page
+	document.getElementById("word_out").innerHTML = encrypt;
+     }
+
+     </script>
+</html>
